@@ -395,6 +395,20 @@ public class ServiceUser {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return resultOK;
     }
+    public boolean PDF() {
+        String url = Statics.BASE_URL + "DisplayPDF";
+        req.setUrl(url);
+        req.setPost(false);
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultOK = req.getResponseCode() == 200; //Code HTTP 200 OK
+                req.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return resultOK;
+    }
 
     public ArrayList<User> ShowAllUsers() {
         String url = Statics.BASE_URL + "allUsers";

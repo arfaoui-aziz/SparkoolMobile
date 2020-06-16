@@ -20,11 +20,12 @@ package GUI;
 
 import Services.ServiceUser;
 import com.codename1.components.FloatingActionButton;
-import com.codename1.ui.Container;
-import com.codename1.ui.FontImage;
-import com.codename1.ui.Label;
+import com.codename1.io.FileSystemStorage;
+import com.codename1.io.Util;
+import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.table.TableLayout;
@@ -81,6 +82,7 @@ String id1;
     private Label ln=new Label("User Type");
     private Label us=new Label("Username");
     Container gui_Container_tab2 = new Container(new TableLayout(3,4));
+    Container gui_Container_1 =new Container(new BoxLayout(BoxLayout.Y_AXIS));
 
 
 
@@ -106,7 +108,18 @@ l2.addPointerPressedListener(new ActionListener() {
     }
 });
         }
-    addAll(title,gui_Container_tab,gui_Container_tab2);
+    addAll(title,gui_Container_tab,gui_Container_tab2,gui_Container_1);
+        Button btnConfirm = new Button("Download All Users Data");
+        gui_Container_1.addComponent(btnConfirm);
+        btnConfirm.addActionListener(e -> {
+            FileSystemStorage fs = FileSystemStorage.getInstance();
+            String fileName = fs.getAppHomePath() + "pdf-sample.pdf";
+            if(!fs.exists(fileName)) {
+                Util.downloadUrlToFile("http://127.0.0.1:8000/DisplayPDF", fileName, true);
+            }
+            Display.getInstance().execute(fileName);
+        });
+
     }// </editor-fold>
 
 //-- DON'T EDIT ABOVE THIS LINE!!!

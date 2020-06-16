@@ -159,6 +159,7 @@ public class SignInForm extends Form {
             else if (ServiceUser.getInstance().ShowUser(ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId()).get(0).getUserType().equals("Administrator")){
                 String ii= ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId();
                 //ServiceUser.getInstance().sendMailLogin("", ServiceUser.getInstance().ShowUser(ii).get(0).getFirstName(), ServiceUser.getInstance().ShowUser(ii).get(0).getLastName(),gui_Text_Field_2.getText());
+
                 new AMyForm(ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId()).show();
 
 
