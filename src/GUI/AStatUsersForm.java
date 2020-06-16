@@ -46,7 +46,7 @@ String id1="";
 
         this(Resources.getGlobalResources(),id);
         id1=id;
-        System.out.println("il id mta3 stat "+id1);
+
     }
 
 
@@ -65,7 +65,7 @@ String id1="";
 
         getToolbar().setTitleComponent(
                 FlowLayout.encloseCenterMiddle(
-                        new Label("Home", "Title")
+                        new Label("Users Stat", "Title")
                 )
         );
 
@@ -101,26 +101,8 @@ String id1="";
         }
         return renderer;
     }
-    protected CategorySeries buildCategoryDataset(String title, double[] values) {
-        CategorySeries series = new CategorySeries(title);
-        int k = 0;
-        for (double value : values) {
-            if (k==0){
 
-                series.add("Teachers", value);
-            }
-            if (k==1){
-                series.add("Students", value);
-            }
-            if (k==3){
-                series.add("Parents", value);
-            }
-
-            k++;
-        }
-
-        return series;
-    }
+    int TeacherNbr=0,StudentNbr=0,ParentNbr=0,TotalNbr=0;
     private void initGuiBuilderComponents(Resources resourceObjectInstance) {
         setLayout(new com.codename1.ui.layouts.BorderLayout());
         setInlineStylesTheme(resourceObjectInstance);
@@ -129,28 +111,25 @@ String id1="";
         setTitle("MyForm");
         setName("MyForm");
 
-int i1=0,i2=0;
-int i3=0;
+
+
 
 
         for(int i = 0; i< ServiceUser.getInstance().ShowAllUsers().size(); i++){
             if (ServiceUser.getInstance().ShowAllUsers().get(i).getUserType().equals("Teacher")){
-                i1++;
-            }
-
-            if (ServiceUser.getInstance().ShowAllUsers().get(i).getUserType().equals("Student")){
-                i3++;
-            }
-
-            if (ServiceUser.getInstance().ShowAllUsers().get(i).getUserType().equals("Parent")){
-                i2++;
+                TeacherNbr++;
+            } else if (ServiceUser.getInstance().ShowAllUsers().get(i).getUserType().equals("Student")){
+                StudentNbr++;
+            }else if (ServiceUser.getInstance().ShowAllUsers().get(i).getUserType().equals("Parent")){
+                ParentNbr++;
             }
 
         }
-        double[] values = new double[]{i2, i1};
+        TotalNbr=TeacherNbr+StudentNbr+ParentNbr;
+        double[] values = new double[]{(TeacherNbr*100)/TotalNbr , (StudentNbr*100)/TotalNbr , (ParentNbr*100)/TotalNbr};
 
         // Set up the renderer
-        int[] colors = new int[]{ColorUtil.rgb(154,205, 50), ColorUtil.rgb(255,127,36), ColorUtil.rgb(238,59,59)};
+        int[] colors = new int[]{ColorUtil.rgb(77, 175, 74), ColorUtil.rgb(228, 26, 28), ColorUtil.rgb(55, 126, 184)};
         DefaultRenderer renderer = buildCategoryRenderer(colors);
         renderer.setZoomButtonsVisible(true);
         renderer.setZoomEnabled(true);
@@ -176,6 +155,27 @@ int i3=0;
 
 
     }// </editor-fold>
+
+    protected CategorySeries buildCategoryDataset(String title, double[] values) {
+        CategorySeries series = new CategorySeries(title);
+        int k = 0;
+        for (double value : values) {
+            if (k==0){
+
+                series.add("Teachers : "+TeacherNbr+" Teachers   ", value);
+            }
+            if (k==1){
+                series.add("Students : "+StudentNbr+" Students   ", value);
+            }
+            if (k==2){
+                series.add("Parents : "+ParentNbr+" Parents   ", value);
+            }
+
+            k++;
+        }
+
+        return series;
+    }
 
 //-- DON'T EDIT ABOVE THIS LINE!!!
 }

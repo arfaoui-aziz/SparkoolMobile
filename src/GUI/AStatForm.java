@@ -48,7 +48,6 @@ String id1="";
 
         this(Resources.getGlobalResources(),id);
         id1=id;
-        System.out.println("il id mta3 stat "+id1);
     }
 
 
@@ -67,7 +66,7 @@ String id1="";
 
         getToolbar().setTitleComponent(
                 FlowLayout.encloseCenterMiddle(
-                        new Label("Home", "Title")
+                        new Label("User Per Type", "Title")
                 )
         );
 
@@ -103,23 +102,7 @@ String id1="";
         }
         return renderer;
     }
-    protected CategorySeries buildCategoryDataset(String title, double[] values) {
-        CategorySeries series = new CategorySeries(title);
-        int k = 0;
-        for (double value : values) {
-            if (k==0){
-
-                series.add("Users", value);
-            }
-            if (k==1){
-                series.add("Administrator", value);
-            }
-
-            k++;
-        }
-
-        return series;
-    }
+    int AdminsNbr=0,UsersNbr=0,TotalNbr=0;
     private void initGuiBuilderComponents(Resources resourceObjectInstance) {
         setLayout(new com.codename1.ui.layouts.BorderLayout());
         setInlineStylesTheme(resourceObjectInstance);
@@ -128,24 +111,26 @@ String id1="";
         setTitle("MyForm");
         setName("MyForm");
 
-int i1=0,i2=0;
 
-        System.out.println("il id mta3 stat22 = "+id1);
+
+
 
         for(int i = 0; i< ServiceUser.getInstance().ShowAllUsers().size(); i++){
-            i1++;
-
-
+            TotalNbr++;
 
             if (ServiceUser.getInstance().ShowAllUsers().get(i).getUserType().equals("Administrator")){
-                i2++;
+                AdminsNbr++;
+            }else
+            {
+                UsersNbr++;
             }
 
         }
-        double[] values = new double[]{i2, i1};
+        double[] values = new double[]{(UsersNbr*100)/TotalNbr,(AdminsNbr*100)/TotalNbr};
+
 
         // Set up the renderer
-        int[] colors = new int[]{ColorUtil.rgb(154,205, 50), ColorUtil.rgb(238,59,59)};
+        int[] colors = new int[]{ColorUtil.rgb(77, 175, 74), ColorUtil.rgb(228, 26, 28)};
         DefaultRenderer renderer = buildCategoryRenderer(colors);
         renderer.setZoomButtonsVisible(true);
         renderer.setZoomEnabled(true);
@@ -177,6 +162,23 @@ int i1=0,i2=0;
 
 
     }// </editor-fold>
+    protected CategorySeries buildCategoryDataset(String title, double[] values) {
+        CategorySeries series = new CategorySeries(title);
+        int k = 0;
+        for (double value : values) {
+            if (k==0){
+//String U = value+" %";
+                series.add("Users :"+UsersNbr+" Users "+"\n", value);
+            }
+            if (k==1){
+                series.add("Administrator : "+AdminsNbr+" Administrator \n" , value);
+            }
+
+            k++;
+        }
+
+        return series;
+    }
 
 //-- DON'T EDIT ABOVE THIS LINE!!!
 }
