@@ -99,7 +99,7 @@ String pswCrypt= bcrypt.hashpw(rpsw.getText(), bcrypt.gensalt());
                if(ServiceUser.getInstance().changePass(id1,pswCrypt)){
                    ServiceUser.getInstance().sendMailLogin("2", ServiceUser.getInstance().ShowUser(id1).get(0).getFirstName(), ServiceUser.getInstance().ShowUser(id1).get(0).getLastName(), ServiceUser.getInstance().ShowUser(id1).get(0).getUsername());
 
-                   new MyForm(id1).show();
+                   new SignInForm(resourceObjectInstance,id1).show();
                }
                else {
                    Dialog.show("Error", "Can't Change Password", new Command("OK"));

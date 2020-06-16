@@ -54,7 +54,7 @@ String id1;
 
         getToolbar().setTitleComponent(
                 FlowLayout.encloseCenterMiddle(
-                        new Label("Marks", "Title")
+                        new Label("All Users", "Title")
                 )
         );
 

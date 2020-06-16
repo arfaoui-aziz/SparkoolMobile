@@ -52,14 +52,14 @@ public class ABaseForm extends Form {
         getToolbar().addCommandToSideMenu("User List", null, e -> new AAllUsersForm(res,id).show());
         getToolbar().addCommandToSideMenu("Stats", null, e -> new AStatForm(res,id).show());
 
-        getToolbar().addCommandToSideMenu("Account", null, e -> new AccountForm(res,id).show());
+        getToolbar().addCommandToSideMenu("Account", null, e -> new AAccountForm(res,id).show());
         getToolbar().addCommandToSideMenu("Signout", null, e -> new SignInForm(res,id).show());
         
         // spacer
         getToolbar().addComponentToSideMenu(new Label(" ", "SideCommand"));
         getToolbar().addComponentToSideMenu(new Label(res.getImage("profile_image.png"), "Container"));
         getToolbar().addComponentToSideMenu(new Label(ServiceUser.getInstance().ShowUser(id).get(0).getFirstName()+" "+ServiceUser.getInstance().ShowUser(id).get(0).getLastName(), "SideCommandNoPad"));
-        getToolbar().addComponentToSideMenu(new Label("Computer Science", "SideCommandSmall"));
+        getToolbar().addComponentToSideMenu(new Label("Administrator", "SideCommandSmall"));
     }
 
         
