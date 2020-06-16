@@ -19,12 +19,22 @@
 
 package GUI;
 
+import com.codename1.components.ScaleImageLabel;
 import com.codename1.components.SpanLabel;
-import com.codename1.ui.*;
+import com.codename1.ui.ButtonGroup;
+import com.codename1.ui.Component;
+import com.codename1.ui.Container;
+import com.codename1.ui.Display;
+import com.codename1.ui.Graphics;
+import com.codename1.ui.Image;
+import com.codename1.ui.Label;
+import com.codename1.ui.Painter;
 import com.codename1.ui.geom.GeneralPath;
 import com.codename1.ui.geom.Rectangle;
+import com.codename1.ui.geom.Shape;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.plaf.Style;
 
 /**
  * GUI builder created Form

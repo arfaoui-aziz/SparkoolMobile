@@ -20,14 +20,26 @@ package GUI;
 
 import Services.ServiceUser;
 import com.codename1.components.FloatingActionButton;
+import com.codename1.ui.Button;
+import com.codename1.ui.Component;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
+import com.codename1.ui.Display;
 import com.codename1.ui.FontImage;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.animations.CommonTransitions;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.geom.Rectangle;
+import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.RoundBorder;
+import com.codename1.ui.plaf.Style;
 import com.codename1.ui.table.TableLayout;
+
+import java.util.List;
 
 /**
  * GUI builder created Form
@@ -48,7 +60,7 @@ String id1;
 
 
 
-    public MarksForm(com.codename1.ui.util.Resources resourceObjectInstance, String id) {
+    public MarksForm(com.codename1.ui.util.Resources resourceObjectInstance,String id) {
         id1=id;
         initGuiBuilderComponents(resourceObjectInstance);
 
@@ -75,11 +87,11 @@ String id1;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private Container gui_Container_tab = new Container(new TableLayout(3,4));
-    private Label title=new Label("Add Marks");
-    private Label clas=new Label("Class");
-    private Label id=new Label("Id N°");
-    private Label fn=new Label("First Name");
-    private Label ln=new Label("Last Name");
+    private  Label title=new Label("Add Marks");
+    private  Label clas=new Label("Class");
+    private  Label id=new Label("Id N°");
+    private  Label fn=new Label("First Name");
+    private  Label ln=new Label("Last Name");
     Container gui_Container_tab2 = new Container(new TableLayout(3,4));
 
 

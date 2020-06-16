@@ -9,6 +9,8 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.RoundBorder;
+import com.codename1.ui.plaf.Style;
+import java.util.List;
 
 /**
  * GUI builder created Form
@@ -28,7 +30,7 @@ public class HomeForm extends BaseForm {
 
 
 
-    public HomeForm(com.codename1.ui.util.Resources resourceObjectInstance, String id) {
+    public HomeForm(com.codename1.ui.util.Resources resourceObjectInstance,String id) {
         initGuiBuilderComponents(resourceObjectInstance);
 
         getToolbar().setTitleComponent(

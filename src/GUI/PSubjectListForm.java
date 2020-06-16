@@ -36,7 +36,7 @@ public class PSubjectListForm extends PBaseForm {
 String id1;
 Double min1;
 Double max1;
-    public PSubjectListForm(String id, Double min, Double max) {
+    public PSubjectListForm(String id,Double min,Double max) {
         this(com.codename1.ui.util.Resources.getGlobalResources(),id,min,max);
         id1=id;
         min1=min;
@@ -50,7 +50,7 @@ Double max1;
 
 
 
-    public PSubjectListForm(com.codename1.ui.util.Resources resourceObjectInstance, String id, Double min, Double max) {
+    public PSubjectListForm(com.codename1.ui.util.Resources resourceObjectInstance, String id,Double min,Double max) {
         id1=id;
         min1=min;
         max1=max;
@@ -79,11 +79,11 @@ Double max1;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private Container gui_Container_tab = new Container(new TableLayout(3,4));
-    private Label title=new Label("Average Between");
-    private Label clas=new Label("Teacher Note");
-    private Label id=new Label("Subject");
-    private Label fn=new Label("CC");
-    private Label ln=new Label("Exam");
+    private  Label title=new Label("Average Between");
+    private  Label clas=new Label("Teacher Note");
+    private  Label id=new Label("Subject");
+    private  Label fn=new Label("CC");
+    private  Label ln=new Label("Exam");
     Container gui_Container_tab2 = new Container(new TableLayout(3,4));
 
 
@@ -95,7 +95,7 @@ Double max1;
         fn.setUIID("coloredLabel"); ln.setUIID("coloredLabel"); id.setUIID("coloredLabel");
 
         gui_Container_tab.add(id).add(fn).add(ln).add(clas);
-        for(int i = 0; i< ServiceUser.getInstance().getMarks(id1).size(); i++){
+        for(int i=0;i< ServiceUser.getInstance().getMarks(id1).size();i++){
 
 
             Double cc = Double.parseDouble(ServiceUser.getInstance().getMarks(id1).get(i).getCc())*0.4;

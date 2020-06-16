@@ -7,10 +7,10 @@ public class Diploma {
     private String specialite;
     private String niveau;
     private String date_obtentation;
-    private String idT;
+    private  String idT;
 
 
-    public Diploma(String intitule, String ecole, String specialite, String niveau, String date_obtentation, String idT) {
+    public Diploma( String intitule, String ecole, String specialite, String niveau, String date_obtentation, String idT) {
 
         this.intitule = intitule;
         this.ecole = ecole;

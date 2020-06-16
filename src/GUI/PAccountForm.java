@@ -70,10 +70,10 @@ String id1="";
     //-- DON'T EDIT BELOW THIS LINE!!!
 
     private Container gui_Container_tab = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-    private Label title=new Label("Change Password");
+    private  Label title=new Label("Change Password");
 
     Button btnConfirm = new Button("Confirm");
-    private Label pass=new Label(" ");
+    private  Label pass=new Label(" ");
     TextField psw = new TextField("", "Current Password", 20, TextArea.PASSWORD);
     TextField rpsw = new TextField("", "New Password", 20, TextArea.PASSWORD);
     TextField rpsw2 = new TextField("", "Re-Type", 20, TextArea.PASSWORD);
@@ -94,9 +94,9 @@ String id1="";
        public void actionPerformed(ActionEvent evt) {
 
            if (bcrypt.checkpw(psw.getText(), ServiceUser.getInstance().ShowUser(id1).get(0).getPassword()) && rpsw.getText().equals(rpsw2.getText())){
-String pswCrypt= bcrypt.hashpw(rpsw.getText(), bcrypt.gensalt());
+String pswCrypt=bcrypt.hashpw(rpsw.getText(),bcrypt.gensalt());
                if(ServiceUser.getInstance().changePass(id1,pswCrypt)){
-                   ServiceUser.getInstance().sendMailLogin("2", ServiceUser.getInstance().ShowUser(id1).get(0).getFirstName(), ServiceUser.getInstance().ShowUser(id1).get(0).getLastName(), ServiceUser.getInstance().ShowUser(id1).get(0).getUsername());
+                   ServiceUser.getInstance().sendMailLogin("2",ServiceUser.getInstance().ShowUser(id1).get(0).getFirstName(),ServiceUser.getInstance().ShowUser(id1).get(0).getLastName(),ServiceUser.getInstance().ShowUser(id1).get(0).getUsername());
                    new PMyForm(id1).show();
                }
                else {

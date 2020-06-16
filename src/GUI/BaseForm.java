@@ -21,7 +21,12 @@ package GUI;
 
 import Services.ServiceContactTeacher;
 import Services.ServiceUser;
-import com.codename1.ui.*;
+import com.codename1.ui.Button;
+import com.codename1.ui.Container;
+import com.codename1.ui.Form;
+import com.codename1.ui.Image;
+import com.codename1.ui.Label;
+import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.util.Resources;
 
@@ -31,7 +36,7 @@ import com.codename1.ui.util.Resources;
  * @author Shai Almog
  */
 public class BaseForm extends Form {
-    public void installSidemenu(Resources res, String id) {
+    public void installSidemenu(Resources res,String id) {
         Image selection = res.getImage("selection-in-sidemenu.png");
         Image inboxImage = null;
         if(isCurrentInbox()) inboxImage = selection;

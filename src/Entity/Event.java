@@ -15,7 +15,7 @@ public class Event {
     String price;
 
     public Event() {};
-    public Event(String id, String nomEvent, String typeEvent, String description, String dateEvent, String placeEvent, String nbParticipants, String theme, String destination, String award, String budget, String price) {
+    public Event(String id, String nomEvent, String typeEvent, String description, String dateEvent, String placeEvent,String  nbParticipants, String theme, String destination, String award, String budget, String price) {
         this.id=id;
         this.nomEvent = nomEvent;
         this.typeEvent = typeEvent;

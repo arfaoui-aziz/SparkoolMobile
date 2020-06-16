@@ -4,11 +4,11 @@ public class Course {
 
 
     private int id;
-    private String name;
+    private  String name;
     private String description;
     private String path;
 
-    public Course(String name, String description, String path) {
+    public Course( String name, String description, String path) {
 
         this.name = name;
         this.description = description;

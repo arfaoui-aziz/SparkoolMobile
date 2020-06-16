@@ -19,14 +19,21 @@
 package GUI;
 
 import Services.ServiceUser;
-import Services.bcrypt;
 import com.codename1.components.FloatingActionButton;
 import com.codename1.ui.*;
+import com.codename1.ui.animations.CommonTransitions;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.geom.Rectangle;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.RoundBorder;
+import com.codename1.ui.plaf.Style;
+import com.codename1.ui.table.TableLayout;
+import Services.bcrypt;
+import java.util.List;
 
 /**
  * GUI builder created Form
@@ -46,7 +53,7 @@ String id1="";
 
 
 
-    public AccountForm(com.codename1.ui.util.Resources resourceObjectInstance, String id) {
+    public AccountForm(com.codename1.ui.util.Resources resourceObjectInstance,String id) {
         id1=id;
         initGuiBuilderComponents(resourceObjectInstance);
 
@@ -70,10 +77,10 @@ String id1="";
     //-- DON'T EDIT BELOW THIS LINE!!!
 
     private Container gui_Container_tab = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-    private Label title=new Label("Change Password");
+    private  Label title=new Label("Change Password");
 
     Button btnConfirm = new Button("Confirm");
-    private Label pass=new Label(" ");
+    private  Label pass=new Label(" ");
     TextField psw = new TextField("", "Current Password", 20, TextArea.PASSWORD);
     TextField rpsw = new TextField("", "New Password", 20, TextArea.PASSWORD);
     TextField rpsw2 = new TextField("", "Re-Type", 20, TextArea.PASSWORD);
@@ -94,10 +101,10 @@ String id1="";
        public void actionPerformed(ActionEvent evt) {
 
            if (bcrypt.checkpw(psw.getText(), ServiceUser.getInstance().ShowUser(id1).get(0).getPassword()) && rpsw.getText().equals(rpsw2.getText())){
-String pswCrypt= bcrypt.hashpw(rpsw.getText(), bcrypt.gensalt());
+String pswCrypt=bcrypt.hashpw(rpsw.getText(),bcrypt.gensalt());
                System.out.println(pswCrypt);
                if(ServiceUser.getInstance().changePass(id1,pswCrypt)){
-                   ServiceUser.getInstance().sendMailLogin("2", ServiceUser.getInstance().ShowUser(id1).get(0).getFirstName(), ServiceUser.getInstance().ShowUser(id1).get(0).getLastName(), ServiceUser.getInstance().ShowUser(id1).get(0).getUsername());
+                   ServiceUser.getInstance().sendMailLogin("2",ServiceUser.getInstance().ShowUser(id1).get(0).getFirstName(),ServiceUser.getInstance().ShowUser(id1).get(0).getLastName(),ServiceUser.getInstance().ShowUser(id1).get(0).getUsername());
 
                    new MyForm(id1).show();
                }

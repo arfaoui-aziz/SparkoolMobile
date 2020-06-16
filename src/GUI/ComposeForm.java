@@ -19,13 +19,22 @@
 package GUI;
 
 import Services.ServiceContactTeacher;
+import Services.ServiceUser;
 import com.codename1.components.FloatingActionButton;
 import com.codename1.ui.*;
+import com.codename1.ui.animations.CommonTransitions;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.geom.Rectangle;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.RoundBorder;
+import com.codename1.ui.plaf.Style;
+import com.codename1.ui.table.TableLayout;
+import Services.bcrypt;
+import java.util.List;
 
 /**
  * GUI builder created Form
@@ -45,7 +54,7 @@ public class ComposeForm extends BaseForm {
 
 
 
-    public ComposeForm(com.codename1.ui.util.Resources resourceObjectInstance, String id) {
+    public ComposeForm(com.codename1.ui.util.Resources resourceObjectInstance,String id) {
         id1=id;
         initGuiBuilderComponents(resourceObjectInstance);
 
@@ -69,11 +78,11 @@ public class ComposeForm extends BaseForm {
     //-- DON'T EDIT BELOW THIS LINE!!!
 
     private Container gui_Container_tab = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-    private Label title=new Label("Compose Message");
+    private  Label title=new Label("Compose Message");
 
     Button btnConfirm = new Button("Send");
     Button btnFile = new Button("Add Files");
-    private Label pass=new Label(" ");
+    private  Label pass=new Label(" ");
     TextField psw = new TextField("", "Subject...", 20, TextArea.ANY);
     TextField rpsw = new TextField("", "Message...", 20, TextArea.ANY);
 

@@ -18,6 +18,7 @@
  */
 package GUI;
 
+import Services.ServiceContactTeacher;
 import Services.ServiceUser;
 import com.codename1.components.FloatingActionButton;
 import com.codename1.ui.*;
@@ -69,10 +70,10 @@ public class PComposeForm extends PBaseForm {
     //-- DON'T EDIT BELOW THIS LINE!!!
 
     private Container gui_Container_tab = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-    private Label title=new Label("Compose Message");
+    private  Label title=new Label("Compose Message");
 
     Button btnConfirm = new Button("Send");
-    private Label pass=new Label(" ");
+    private  Label pass=new Label(" ");
     TextField psw = new TextField("", "Type...", 20, TextArea.ANY);
     TextField rpsw = new TextField("", "Message...", 20, TextArea.ANY);
 

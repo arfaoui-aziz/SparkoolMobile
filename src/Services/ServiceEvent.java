@@ -34,10 +34,10 @@ public class ServiceEvent {
         try {
             events=new ArrayList<>();
             JSONParser j = new JSONParser();
-            Map<String, Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
 
-            List<Map<String, Object>> list = (List<Map<String, Object>>)tasksListJson.get("root");
-            for(Map<String, Object> obj : list){
+            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            for(Map<String,Object> obj : list){
                 Event u = new Event();
 
                 u.setId(obj.get("id").toString());
@@ -67,7 +67,7 @@ public class ServiceEvent {
     }
 
     public ArrayList<Event> ShowEvents() {
-        String url = Statics.BASE_URL+"showEvent";
+        String url = "http://localhost/amenSYMFONY/web/app_dev.php/showEvent";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -101,10 +101,10 @@ public class ServiceEvent {
         try {
             events=new ArrayList<>();
             JSONParser j = new JSONParser();
-            Map<String, Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
 
-            List<Map<String, Object>> list = (List<Map<String, Object>>)tasksListJson.get("root");
-            for(Map<String, Object> obj : list){
+            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            for(Map<String,Object> obj : list){
                 ch=obj.get("id").toString();
 
             }
@@ -116,8 +116,8 @@ public class ServiceEvent {
         return ch;
     }
 
-    public String checkPart(String idu, String idc) {
-        String url = Statics.BASE_URL+"checkParticipationEvent?idE="+idu+"&idC="+idc;
+    public Boolean checkPart(String idu,String idc) {
+        String url = Statics.BASE_URL+"checkParticipationEvent?idU="+idu+"&idC="+idc;
 
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -128,11 +128,17 @@ public class ServiceEvent {
             }
         });
         NetworkManager.getInstance().addToQueueAndWait(req);
-        return  ch;
+        if (ch.equals("")){
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
-    public boolean participate(String idu, String idc){
-        String url = Statics.BASE_URL + "Participate?idU="+idu+"&idC="+idc;
+
+    public boolean participateEvent(String idu,String idc){
+        String url = Statics.BASE_URL + "ParticipateEvent?idU="+idu+"&idC="+idc;
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -145,8 +151,8 @@ public class ServiceEvent {
         return ok;
     }
 
-    public boolean cancel(String idu, String idc){
-        String url = Statics.BASE_URL + "Cancel?idU="+idu+"&idC="+idc;
+    public boolean cancelEvent(String idu,String idc){
+        String url = Statics.BASE_URL + "CancelEvent?idU="+idu+"&idC="+idc;
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -160,7 +166,8 @@ public class ServiceEvent {
     }
 
 
-    public void sendMailevent(String fn, String ln, String us, String event){
+
+    public void sendMailevent(String fn,String ln,String us,String event){
         String url = Statics.BASE_URL + "SendMail?mail=sonia.hadouej@esprit.tn&fn="+fn+"&ln="+ln+"&us="+us+"&event="+event;
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

@@ -19,12 +19,10 @@
 package GUI;
 
 import Services.ServiceClub;
+import Services.ServiceEvent;
 import Services.ServiceUser;
 import com.codename1.components.FloatingActionButton;
-import com.codename1.ui.Button;
-import com.codename1.ui.Container;
-import com.codename1.ui.FontImage;
-import com.codename1.ui.Label;
+import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
@@ -40,7 +38,7 @@ import com.codename1.ui.table.TableLayout;
 public class EClubDetailsForm extends PBaseForm {
 String id1="";
 String idC1="";
-    public EClubDetailsForm(String id, String idC) {
+    public EClubDetailsForm(String id,String idC) {
         this(com.codename1.ui.util.Resources.getGlobalResources(),id,idC);
     }
 
@@ -51,7 +49,7 @@ String idC1="";
 
 
 
-    public EClubDetailsForm(com.codename1.ui.util.Resources resourceObjectInstance, String id, String idC) {
+    public EClubDetailsForm(com.codename1.ui.util.Resources resourceObjectInstance, String id,String idC) {
         id1=id;
         idC1=idC;
         initGuiBuilderComponents(resourceObjectInstance);
@@ -98,9 +96,10 @@ String idC1="";
     private Label lbudget = new Label();
     private Label budget = new Label();
 
-    private Label title=new Label();
+    private  Label title=new Label();
     private Container gui_Container_tab = new Container(new TableLayout(2,7));
     private Container gui_Container_tab1 = new Container(new TableLayout(9,2));
+    ShareButton sb = new ShareButton();
 
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
@@ -140,7 +139,6 @@ String idC1="";
                 add(lbudget).add(budget)
         ;
         gui_Container_1.addComponent(gui_Container_tab1);
-        System.out.println(ServiceClub.getInstance().checkPart(id1,idC1));
         if (ServiceClub.getInstance().checkPart(id1,idC1)){
             gui_Container_1.addComponent(btnCancel);
 
@@ -149,6 +147,9 @@ String idC1="";
             gui_Container_1.addComponent(btnConfirm);
 
         }
+
+        addComponent(sb);
+
 
 
 
@@ -159,7 +160,7 @@ String idC1="";
 
 
                 ServiceClub.getInstance().participate(id1,idC1);
-                ServiceClub.getInstance().sendMailClub(ServiceUser.getInstance().ShowUser(id1).get(0).getFirstName(), ServiceUser.getInstance().ShowUser(id1).get(0).getLastName(), ServiceUser.getInstance().ShowUser(id1).get(0).getUsername(),name.getText());
+                ServiceClub.getInstance().sendMailClub(ServiceUser.getInstance().ShowUser(id1).get(0).getFirstName(),ServiceUser.getInstance().ShowUser(id1).get(0).getLastName(),ServiceUser.getInstance().ShowUser(id1).get(0).getUsername(),name.getText());
 
                 new EClubsForm(id1).show();
 

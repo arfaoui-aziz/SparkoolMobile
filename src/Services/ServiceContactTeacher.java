@@ -1,6 +1,7 @@
 package Services;
 
 import Entity.ContactTeacher;
+import Entity.User;
 import Utils.Statics;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
@@ -33,10 +34,10 @@ public class ServiceContactTeacher {
         try {
 
             JSONParser j = new JSONParser();
-            Map<String, Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
 
-            List<Map<String, Object>> list = (List<Map<String, Object>>)tasksListJson.get("root");
-            for(Map<String, Object> obj : list){
+            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            for(Map<String,Object> obj : list){
 
 
                 ch=obj.get("nb").toString();
@@ -71,10 +72,10 @@ public class ServiceContactTeacher {
         try {
             contacts=new ArrayList<>();
             JSONParser j = new JSONParser();
-            Map<String, Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
 
-            List<Map<String, Object>> list = (List<Map<String, Object>>)tasksListJson.get("root");
-            for(Map<String, Object> obj : list){
+            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            for(Map<String,Object> obj : list){
                 ContactTeacher c = new ContactTeacher();
                // System.out.println(obj.get("id"));
               //  int nbShow
@@ -130,7 +131,7 @@ public class ServiceContactTeacher {
         return Integer.parseInt(ch);
     }
 
-    public boolean addReply(String id, String rep){
+    public boolean addReply(String id,String rep){
         String url = Statics.BASE_URL + "addReply?id="+id+"&rep=-Teacher: "+rep;
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -144,7 +145,7 @@ public class ServiceContactTeacher {
         return resultOK;
     }
 
-    public boolean addMsg(String sub, String msg, String id, String file){
+    public boolean addMsg(String sub,String msg,String id,String file){
         String url = Statics.BASE_URL + "addMsg?sub="+sub+"&date="+"2020/05/25"+"&msg="+msg+"&idT="+id+"&file="+file;
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

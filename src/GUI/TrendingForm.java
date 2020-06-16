@@ -34,7 +34,7 @@ public class TrendingForm extends BaseForm {
         this(com.codename1.ui.util.Resources.getGlobalResources(),id);
     }
     
-    public TrendingForm(com.codename1.ui.util.Resources resourceObjectInstance, String id) {
+    public TrendingForm(com.codename1.ui.util.Resources resourceObjectInstance,String id) {
         initGuiBuilderComponents(resourceObjectInstance);
         gui_separator1.setShowEvenIfBlank(true);
         gui_Label_1_1_1.setShowEvenIfBlank(true);

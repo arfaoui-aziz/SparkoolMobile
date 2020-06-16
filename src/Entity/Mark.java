@@ -3,10 +3,10 @@ package Entity;
 public class Mark {
 
 
-    private String id;
+    private  String id;
     private String subject;
     private String cc;
-    private String exam;
+    private  String exam;
     private String note;
     private String id_Student;
     private String id_Teacher;

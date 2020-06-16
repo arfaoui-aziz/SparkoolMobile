@@ -20,17 +20,20 @@ package GUI;
 
 import Services.ServiceClub;
 import Services.ServiceEvent;
+import Services.ServiceUser;
 import com.codename1.components.FloatingActionButton;
-import com.codename1.ui.Button;
-import com.codename1.ui.Container;
-import com.codename1.ui.FontImage;
-import com.codename1.ui.Label;
+import com.codename1.io.Log;
+import com.codename1.media.Media;
+import com.codename1.media.MediaManager;
+import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.table.TableLayout;
+
+import java.io.IOException;
 
 /**
  * GUI builder created Form
@@ -89,7 +92,8 @@ String idC1="";
     private Label type= new Label();
     private Label ldesc = new Label();
     private Label desc = new Label();
-    Button btnConfirm = new Button("Cancel");
+    Button btnConfirm = new Button("Participate");
+    Button btnCancel = new Button("Cancel");
 
 
     private Label ldate = new Label();
@@ -103,9 +107,10 @@ String idC1="";
     private Label lprice = new Label();
     private Label price = new Label();
 
-    private Label title=new Label();
+    private  Label title=new Label();
     private Container gui_Container_tab = new Container(new TableLayout(2,7));
     private Container gui_Container_tab1 = new Container(new TableLayout(9,2));
+    Button btn = new Button("media");
 
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
@@ -153,43 +158,62 @@ String idC1="";
                 add(ldest).add(dest);
         gui_Container_1.addComponent(gui_Container_tab1);
         System.out.println(ServiceEvent.getInstance().checkPart(id1,idC1));
-        if (ServiceEvent.getInstance().checkPart(id1,idC1).equals("")){
-btnConfirm.setText("Participate");
+        if (ServiceEvent.getInstance().checkPart(id1,idC1))
+        {
+            gui_Container_1.addComponent(btnCancel); }
+
+        else {
+            gui_Container_1.addComponent(btnConfirm);
+
         }
+        gui_Container_1.addComponent(btn);
 
-
-
-        gui_Container_1.addComponent(btnConfirm);
 
         btnConfirm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
+if (!parti.getText().equals("0.0")){
 
+    ServiceEvent.getInstance().participateEvent(id1,idC1);
+    ServiceEvent.getInstance().sendMailevent(ServiceUser.getInstance().ShowUser(id1).get(0).getFirstName(),ServiceUser.getInstance().ShowUser(id1).get(0).getLastName(),ServiceUser.getInstance().ShowUser(id1).get(0).getUsername(),name.getText());
 
+        new EEventForm(id1).show();
+}
+else {
+    Dialog.show("Failed", "There Are no more empty places :(", new Command("OK"));
 
-                    ServiceClub.getInstance().participate(id1,idC1);
-                    new EClubsForm(id1).show();
-
+}
 
             }
         });
 
+        btnCancel.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent evt) {
+
+                    ServiceEvent.getInstance().cancelEvent(id1,idC1);
+
+                    new EEventForm(id1).show();
 
 
 
+                }
+        });
 
+             //VIDEO YOUTUBE
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                Display.getInstance().execute("https://www.youtube.com/watch?v=Pncl3fnK3WQ");
+            }
+        });
 
-
-
-
-
-
-
-        addAll(gui_Container_1);
-
+              addAll(gui_Container_1);
 
 
     }// </editor-fold>
+
+
 
 //-- DON'T EDIT ABOVE THIS LINE!!!
 }

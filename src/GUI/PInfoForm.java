@@ -18,11 +18,12 @@
  */
 package GUI;
 
+import Services.ServiceAbsence;
 import Services.ServiceUser;
 import com.codename1.components.FloatingActionButton;
-import com.codename1.ui.Container;
-import com.codename1.ui.FontImage;
-import com.codename1.ui.Label;
+import com.codename1.ui.*;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.RoundBorder;
@@ -90,7 +91,7 @@ private Label lchild = new Label();
 private Label child =new Label();
 
 
-    private Label title=new Label();
+    private  Label title=new Label();
     private Container gui_Container_tab1 = new Container(new TableLayout(6,2));
 
 

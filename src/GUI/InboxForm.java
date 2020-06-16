@@ -20,7 +20,15 @@ package GUI;
 
 import Services.ServiceContactTeacher;
 import com.codename1.components.FloatingActionButton;
-import com.codename1.ui.*;
+import com.codename1.ui.Button;
+import com.codename1.ui.Component;
+import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
+import com.codename1.ui.Display;
+import com.codename1.ui.FontImage;
+import com.codename1.ui.Image;
+import com.codename1.ui.Label;
+import com.codename1.ui.animations.CommonTransitions;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.geom.Rectangle;
@@ -28,6 +36,8 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.RoundBorder;
+import com.codename1.ui.plaf.Style;
+import java.util.List;
 
 /**
  * GUI builder created Form
@@ -48,7 +58,7 @@ String id1="";
     
     
     
-    public InboxForm(com.codename1.ui.util.Resources resourceObjectInstance, String id) {
+    public InboxForm(com.codename1.ui.util.Resources resourceObjectInstance,String id) {
         id1=id;
         initGuiBuilderComponents(resourceObjectInstance);
 
@@ -164,7 +174,7 @@ String id1="";
         setTitle("InboxForm");
         setName("InboxForm");
         System.out.println("il id = "+id1);
-        for (int i = 0; i< ServiceContactTeacher.getInstance().ShowMsgs(id1).size() ; i++) {
+        for (int i=0 ;i<ServiceContactTeacher.getInstance().ShowMsgs(id1).size() ; i++) {
             int i1=i;
              Container gui_Container_2 = new Container(new FlowLayout());
              Container gui_Container_1 = new Container(new com.codename1.ui.layouts.BorderLayout());

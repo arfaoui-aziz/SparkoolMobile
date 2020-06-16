@@ -18,6 +18,7 @@
  */
 package GUI;
 
+import Services.ServiceContactTeacher;
 import Services.ServiceUser;
 import com.codename1.components.FloatingActionButton;
 import com.codename1.ui.*;
@@ -163,7 +164,7 @@ String id1="";
         setLayout(new BoxLayout(BoxLayout.Y_AXIS));
         setTitle("InboxForm");
         setName("InboxForm");
-        for (int i = 0; i< ServiceUser.getInstance().getClaims(id1).size() ; i++) {
+        for (int i=0 ;i<ServiceUser.getInstance().getClaims(id1).size() ; i++) {
             int i1=i;
              Container gui_Container_2 = new Container(new FlowLayout());
              Container gui_Container_1 = new Container(new com.codename1.ui.layouts.BorderLayout());
@@ -229,7 +230,7 @@ String id1="";
 
             gui_Label_2.setUIID("RedLabel");
             gui_Label_2.setName("Label_2");
-            gui_Text_Area_1.setText("-Reply: "+ ServiceUser.getInstance().getClaims(id1).get(i).getReponse());
+            gui_Text_Area_1.setText("-Reply: "+ServiceUser.getInstance().getClaims(id1).get(i).getReponse());
             gui_Text_Area_1.setUIID("SmallFontLabel");
             gui_Text_Area_1.setName("Text_Area_1");
             gui_Container_2.setName("Container_2");

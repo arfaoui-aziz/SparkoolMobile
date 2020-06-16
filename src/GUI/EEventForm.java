@@ -19,6 +19,7 @@
 package GUI;
 
 import Services.ServiceEvent;
+import Services.ServiceUser;
 import com.codename1.components.FloatingActionButton;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
@@ -75,11 +76,11 @@ String id1;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private Container gui_Container_tab = new Container(new TableLayout(3,4));
-    private Label title=new Label("All Events");
-    private Label clas=new Label("Name");
-    private Label id=new Label("Type");
-    private Label fn=new Label("Nb Particpants");
-    private Label ln=new Label("Price");
+    private  Label title=new Label("All Events");
+    private  Label clas=new Label("Name");
+    private  Label id=new Label("Type");
+    private  Label fn=new Label("Nb Particpants");
+    private  Label ln=new Label("Price");
     Container gui_Container_tab2 = new Container(new TableLayout(3,4));
 
 
@@ -99,6 +100,7 @@ Label id3 = new Label(ServiceEvent.getInstance().ShowEvents().get(i).getId());
             id2.addPointerPressedListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent evt) {
+
                     new EEventDetailsForm(id1,id3.getText()).show();
                 }
             });

@@ -23,6 +23,8 @@ import com.codename1.components.FloatingActionButton;
 import com.codename1.ui.Container;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Label;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.table.TableLayout;
@@ -73,11 +75,11 @@ String id1;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private Container gui_Container_tab = new Container(new TableLayout(3,4));
-    private Label title=new Label("Add Marks");
-    private Label clas=new Label("Teacher Note");
-    private Label id=new Label("Subject");
-    private Label fn=new Label("CC");
-    private Label ln=new Label("Exam");
+    private  Label title=new Label("Add Marks");
+    private  Label clas=new Label("Teacher Note");
+    private  Label id=new Label("Subject");
+    private  Label fn=new Label("CC");
+    private  Label ln=new Label("Exam");
     Container gui_Container_tab2 = new Container(new TableLayout(3,4));
 
 
@@ -88,7 +90,7 @@ String id1;
         clas.setUIID("coloredLabel");
         fn.setUIID("coloredLabel"); ln.setUIID("coloredLabel"); id.setUIID("coloredLabel");
         gui_Container_tab.add(id).add(fn).add(ln).add(clas);
-        for(int i = 0; i< ServiceUser.getInstance().getMarks(id1).size(); i++){
+        for(int i=0;i< ServiceUser.getInstance().getMarks(id1).size();i++){
 
 
 

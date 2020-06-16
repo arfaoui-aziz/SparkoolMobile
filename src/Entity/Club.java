@@ -4,7 +4,7 @@ public class Club {
 
     String idClub;
     String nomClub;
-    String members;
+    String  members;
     String activity;
     String budget;
     String dateCreation;
@@ -21,7 +21,7 @@ public class Club {
 
     }
 
-    public Club(String nomClub, String members, String activity, String budget, String dateCreation ) {
+    public Club( String nomClub, String members, String activity, String budget, String dateCreation ) {
 
         this.nomClub=nomClub;
         this.members=members;

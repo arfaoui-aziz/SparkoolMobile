@@ -19,13 +19,19 @@
 package GUI;
 
 import com.codename1.l10n.SimpleDateFormat;
-import com.codename1.ui.*;
+import com.codename1.ui.Button;
+import com.codename1.ui.Component;
+import com.codename1.ui.Container;
+import com.codename1.ui.Display;
+import com.codename1.ui.FontImage;
+import com.codename1.ui.Form;
+import com.codename1.ui.Label;
+import com.codename1.ui.Toolbar;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.spinner.Picker;
 import com.codename1.ui.util.Resources;
-
 import java.util.Date;
 
 /**
@@ -39,7 +45,7 @@ public class CalendarForm extends BaseForm {
         this(Resources.getGlobalResources(),id);
     }
     
-    public CalendarForm(Resources resourceObjectInstance , String id) {
+    public CalendarForm(Resources resourceObjectInstance ,String id) {
         initGuiBuilderComponents(resourceObjectInstance);
         setLayout(BoxLayout.y());
         setScrollableY(true);
@@ -97,9 +103,9 @@ public class CalendarForm extends BaseForm {
         }
         Container mainContent = BoxLayout.encloseY(
                 BoxLayout.encloseX(
-                        new Label(title, "SmallLabel"),
-                        new Label("-", "SmallThinLabel"),
-                        new Label(startTime, "SmallThinLabel"),
+                        new Label(title, "SmallLabel"), 
+                        new Label("-", "SmallThinLabel"), 
+                        new Label(startTime, "SmallThinLabel"), 
                         new Label("-", "SmallThinLabel"),
                         new Label(endTime, "SmallThinLabel")),
                 new Label(attendance, "TinyThinLabel"),

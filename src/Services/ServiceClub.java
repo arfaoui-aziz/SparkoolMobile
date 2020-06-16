@@ -1,6 +1,8 @@
 package Services;
 
 import Entity.Club;
+import Entity.ContactTeacher;
+import Entity.User;
 import Utils.Statics;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
@@ -34,10 +36,10 @@ public class ServiceClub {
         try {
             clubs=new ArrayList<>();
             JSONParser j = new JSONParser();
-            Map<String, Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
 
-            List<Map<String, Object>> list = (List<Map<String, Object>>)tasksListJson.get("root");
-            for(Map<String, Object> obj : list){
+            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            for(Map<String,Object> obj : list){
                 Club u = new Club();
                 // System.out.println(obj.get("id"));
                 //  int nbShow
@@ -61,7 +63,7 @@ public class ServiceClub {
     }
 
     public ArrayList<Club> ShowClubs() {
-        String url = Statics.BASE_URL+"showClub";
+        String url = "http://localhost/amenSYMFONY/web/app_dev.php/showClub";
         req.setUrl(url);
         req.setPost(false);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -95,10 +97,10 @@ public class ServiceClub {
         try {
             clubs=new ArrayList<>();
             JSONParser j = new JSONParser();
-            Map<String, Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
 
-            List<Map<String, Object>> list = (List<Map<String, Object>>)tasksListJson.get("root");
-            for(Map<String, Object> obj : list){
+            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            for(Map<String,Object> obj : list){
                 ch=obj.get("id").toString();
 
             }
@@ -110,7 +112,7 @@ public class ServiceClub {
         return ch;
     }
 
-    public Boolean checkPart(String idu, String idc) {
+    public Boolean checkPart(String idu,String idc) {
         String url = Statics.BASE_URL+"checkParticipation?idU="+idu+"&idC="+idc;
 
         req.setUrl(url);
@@ -130,7 +132,7 @@ public class ServiceClub {
         }
     }
 
-    public boolean participate(String idu, String idc){
+    public boolean participate(String idu,String idc){
         String url = Statics.BASE_URL + "Participate?idU="+idu+"&idC="+idc;
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -144,7 +146,7 @@ public class ServiceClub {
         return ok;
     }
 
-    public boolean cancel(String idu, String idc){
+    public boolean cancel(String idu,String idc){
         String url = Statics.BASE_URL + "Cancel?idU="+idu+"&idC="+idc;
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -159,7 +161,7 @@ public class ServiceClub {
     }
 
 
-    public void sendMailClub(String fn, String ln, String us, String club){
+    public void sendMailClub(String fn,String ln,String us,String club){
         String url = Statics.BASE_URL + "SendMail?mail=sonia.hadouej@esprit.tn&fn="+fn+"&ln="+ln+"&us="+us+"&club="+club;
         req.setUrl(url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {

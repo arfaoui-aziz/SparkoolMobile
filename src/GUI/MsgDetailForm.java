@@ -18,17 +18,25 @@
  */
 package GUI;
 
+import Services.ServiceAbsence;
 import Services.ServiceContactTeacher;
 import Services.ServiceUser;
 import com.codename1.components.FloatingActionButton;
 import com.codename1.components.SpanLabel;
+import com.codename1.io.Log;
 import com.codename1.ui.*;
+import com.codename1.ui.animations.CommonTransitions;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.geom.Rectangle;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.RoundBorder;
+import com.codename1.ui.plaf.Style;
 import com.codename1.ui.table.TableLayout;
+
+import java.util.List;
 
 /**
  * GUI builder created Form
@@ -38,7 +46,7 @@ import com.codename1.ui.table.TableLayout;
 public class MsgDetailForm extends BaseForm {
     String id1="";
     int i1=0;
-    public MsgDetailForm(String id, int i) {
+    public MsgDetailForm(String id,int i) {
 
         this(com.codename1.ui.util.Resources.getGlobalResources(),id,i);
         id1=id;
@@ -52,7 +60,7 @@ public class MsgDetailForm extends BaseForm {
 
 
 
-    public MsgDetailForm(com.codename1.ui.util.Resources resourceObjectInstance, String id, int i) {
+    public MsgDetailForm(com.codename1.ui.util.Resources resourceObjectInstance,String id,int i) {
         id1=id;
         i1=i;
         initGuiBuilderComponents(resourceObjectInstance);
@@ -92,7 +100,7 @@ public class MsgDetailForm extends BaseForm {
     private Container gui_Container_SearchAb = new Container(new BoxLayout(BoxLayout.Y_AXIS));
     TextField nbAb = new TextField("", "Reply...", 20, TextArea.ANY);
     Button btnConfirm = new Button("Send");
-    private Label title=new Label();
+    private  Label title=new Label();
     private Container gui_Container_tab1 = new Container(new TableLayout(3,2));
 
 

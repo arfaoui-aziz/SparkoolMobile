@@ -1,5 +1,7 @@
 package Services;
 
+import Entity.Absence;
+import Entity.User;
 import Utils.Statics;
 import com.codename1.io.*;
 import com.codename1.ui.events.ActionListener;
@@ -30,10 +32,10 @@ public class ServiceAbsence {
         try {
 
             JSONParser j = new JSONParser();
-            Map<String, Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
 
-            List<Map<String, Object>> list = (List<Map<String, Object>>)tasksListJson.get("root");
-            for(Map<String, Object> obj : list){
+            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            for(Map<String,Object> obj : list){
 
 
                 ch=obj.get("nb").toString();
@@ -50,10 +52,10 @@ public class ServiceAbsence {
         try {
             ach=new ArrayList<>();
             JSONParser j = new JSONParser();
-            Map<String, Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
+            Map<String,Object> tasksListJson = j.parseJSON(new CharArrayReader(jsonText.toCharArray()));
 
-            List<Map<String, Object>> list = (List<Map<String, Object>>)tasksListJson.get("root");
-            for(Map<String, Object> obj : list){
+            List<Map<String,Object>> list = (List<Map<String,Object>>)tasksListJson.get("root");
+            for(Map<String,Object> obj : list){
 
                 ach.add(obj.get("jour").toString());
             }
@@ -80,7 +82,7 @@ public class ServiceAbsence {
         NetworkManager.getInstance().addToQueueAndWait(req);
         return ch;
     }
-    public ArrayList<String> ShowUser(String id, String nb) {
+    public ArrayList<String> ShowUser(String id,String nb) {
         String url = Statics.BASE_URL+"ShowAbByWeek?id="+id+"&sem="+nb+"&au=2019-20";
         req.setUrl(url);
         req.setPost(false);

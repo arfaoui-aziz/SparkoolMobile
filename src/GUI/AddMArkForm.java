@@ -21,11 +21,19 @@ package GUI;
 import Services.ServiceUser;
 import com.codename1.components.FloatingActionButton;
 import com.codename1.ui.*;
+import com.codename1.ui.animations.CommonTransitions;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.geom.Rectangle;
+import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.RoundBorder;
+import com.codename1.ui.plaf.Style;
+import com.codename1.ui.table.TableLayout;
+import Services.bcrypt;
+import java.util.List;
 
 /**
  * GUI builder created Form
@@ -48,7 +56,7 @@ public class AddMArkForm extends BaseForm {
 
 
 
-    public AddMArkForm(com.codename1.ui.util.Resources resourceObjectInstance, String id, String idS) {
+    public AddMArkForm(com.codename1.ui.util.Resources resourceObjectInstance,String id,String idS) {
         id1=id;
         initGuiBuilderComponents(resourceObjectInstance);
 
@@ -72,10 +80,10 @@ public class AddMArkForm extends BaseForm {
     //-- DON'T EDIT BELOW THIS LINE!!!
 
     private Container gui_Container_tab = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-    private Label title=new Label("Change Password");
+    private  Label title=new Label("Change Password");
 
     Button btnConfirm = new Button("Confirm");
-    private Label pass=new Label(" ");
+    private  Label pass=new Label(" ");
     TextField psw = new TextField("", "CC...", 20, TextArea.ANY);
     TextField rpsw = new TextField("", "Exam...", 20, TextArea.ANY);
     TextField rpsw2 = new TextField("", "Note...", 20, TextArea.ANY);

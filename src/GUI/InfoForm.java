@@ -21,13 +21,20 @@ package GUI;
 import Services.ServiceAbsence;
 import Services.ServiceUser;
 import com.codename1.components.FloatingActionButton;
+import com.codename1.io.Log;
 import com.codename1.ui.*;
+import com.codename1.ui.animations.CommonTransitions;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.geom.Rectangle;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.FlowLayout;
+import com.codename1.ui.layouts.LayeredLayout;
 import com.codename1.ui.plaf.RoundBorder;
+import com.codename1.ui.plaf.Style;
 import com.codename1.ui.table.TableLayout;
+
+import java.util.List;
 
 /**
  * GUI builder created Form
@@ -47,7 +54,7 @@ String id1="";
 
 
 
-    public InfoForm(com.codename1.ui.util.Resources resourceObjectInstance, String id) {
+    public InfoForm(com.codename1.ui.util.Resources resourceObjectInstance,String id) {
         id1=id;
         initGuiBuilderComponents(resourceObjectInstance);
 
@@ -95,7 +102,7 @@ String id1="";
     private Container gui_Container_SearchAb = new Container(new BoxLayout(BoxLayout.Y_AXIS));
     TextField nbAb = new TextField("", "Week Number", 20, TextArea.NUMERIC);
     Button btnConfirm = new Button("Confirm");
-    private Label title=new Label();
+    private  Label title=new Label();
     private Container gui_Container_tab = new Container(new TableLayout(2,7));
     private Container gui_Container_tab1 = new Container(new TableLayout(9,2));
 
@@ -206,7 +213,7 @@ ab.setText(ServiceAbsence.getInstance().nbAbsence(id1)+" Absences");
                 sa1.setIcon(resourceObjectInstance.getImage("icons8-tick_box.png"));
                 wk.setText("Week "+nbAb.getText());
 
-                for(int i = 0; i< ServiceAbsence.getInstance().ShowUser(id1,nbAb.getText()).size(); i++){
+                for(int i=0;i<ServiceAbsence.getInstance().ShowUser(id1,nbAb.getText()).size();i++){
                     System.out.println(ServiceAbsence.getInstance().ShowUser(id1,nbAb.getText()).get(i));
                     if (ServiceAbsence.getInstance().ShowUser(id1,nbAb.getText()).get(i).equals("Monday")){
                         mn1.setIcon(resourceObjectInstance.getImage("icons8-close_window.png"));

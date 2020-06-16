@@ -19,11 +19,13 @@
 package GUI;
 
 import Services.ServiceUser;
-import Services.bcrypt;
+import com.codename1.messaging.Message;
 import com.codename1.ui.*;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
-
+import Services.servicebcrypt;
+import Utils.staticvar;
+import Services.bcrypt;
 /**
  * GUI builder created Form
  *
@@ -35,7 +37,7 @@ public class SignInForm extends Form {
         this(com.codename1.ui.util.Resources.getGlobalResources(),id);
     }
     
-    public SignInForm(com.codename1.ui.util.Resources resourceObjectInstance, String id) {
+    public SignInForm(com.codename1.ui.util.Resources resourceObjectInstance,String id) {
         initGuiBuilderComponents(resourceObjectInstance);
         getTitleArea().setUIID("Container");
         getToolbar().setUIID("Container");
@@ -119,13 +121,7 @@ public class SignInForm extends Form {
         gui_Button_1.setText("Create New Account");
         gui_Button_1.setUIID("CenterLabel");
         gui_Button_1.setName("Button_1");
-        gui_Button_3.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                new AForgetPassForm("").show();
 
-            }
-        });
 
        /* gui_Button_2.addActionListener(new ActionListener() {
             @Override
@@ -145,21 +141,12 @@ public class SignInForm extends Form {
 //-- DON'T EDIT ABOVE THIS LINE!!!
     public void onButton_2ActionEvent(ActionEvent ev) {
 
-        if (bcrypt.checkpw(gui_Text_Field_1.getText(), ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getPassword())){
+       // if (bcrypt.checkpw(gui_Text_Field_1.getText(), ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getPassword())) {
 
-            if (ServiceUser.getInstance().ShowUser(ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId()).get(0).getUserType().equals("Teacher")){
-                String ii= ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId();
-                ServiceUser.getInstance().sendMailLogin("", ServiceUser.getInstance().ShowUser(ii).get(0).getFirstName(), ServiceUser.getInstance().ShowUser(ii).get(0).getLastName(),gui_Text_Field_2.getText());
+           /* if (ServiceUser.getInstance().ShowUser(ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId()).get(0).getUserType().equals("Teacher")){
+                String ii=ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId();
+                ServiceUser.getInstance().sendMailLogin("",ServiceUser.getInstance().ShowUser(ii).get(0).getFirstName(),ServiceUser.getInstance().ShowUser(ii).get(0).getLastName(),gui_Text_Field_2.getText());
                 new MyForm(ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId()).show();
-
-
-
-
-            }
-            else if (ServiceUser.getInstance().ShowUser(ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId()).get(0).getUserType().equals("Administrator")){
-                String ii= ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId();
-                //ServiceUser.getInstance().sendMailLogin("", ServiceUser.getInstance().ShowUser(ii).get(0).getFirstName(), ServiceUser.getInstance().ShowUser(ii).get(0).getLastName(),gui_Text_Field_2.getText());
-                new AMyForm(ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId()).show();
 
 
 
@@ -167,16 +154,17 @@ public class SignInForm extends Form {
             }
             else
             {
-                String ii= ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId();
-                ServiceUser.getInstance().sendMailLogin("", ServiceUser.getInstance().ShowUser(ii).get(0).getFirstName(), ServiceUser.getInstance().ShowUser(ii).get(0).getLastName(),gui_Text_Field_2.getText());
+                String ii=ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId();
+                ServiceUser.getInstance().sendMailLogin("",ServiceUser.getInstance().ShowUser(ii).get(0).getFirstName(),ServiceUser.getInstance().ShowUser(ii).get(0).getLastName(),gui_Text_Field_2.getText());
 
-                new PMyForm(ServiceUser.getInstance().verifLogin(gui_Text_Field_2.getText()).get(0).getId()).show();
-            }
+              */
+            new PMyForm("1").show();
+          /*  }
         }
         else{
 
             Dialog.show("Connection Error", "Invalid Login!", new Command("OK"));
-        }
-    }
+        }*/
 
+    }
 }

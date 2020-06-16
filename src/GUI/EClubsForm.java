@@ -20,7 +20,11 @@ package GUI;
 
 import Services.ServiceClub;
 import com.codename1.components.FloatingActionButton;
+import com.codename1.io.FileSystemStorage;
+import com.codename1.media.Media;
+import com.codename1.media.MediaManager;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Label;
 import com.codename1.ui.events.ActionEvent;
@@ -28,6 +32,8 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.FlowLayout;
 import com.codename1.ui.plaf.RoundBorder;
 import com.codename1.ui.table.TableLayout;
+
+import java.io.IOException;
 
 /**
  * GUI builder created Form
@@ -75,12 +81,40 @@ String id1;
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
     private Container gui_Container_tab = new Container(new TableLayout(3,4));
-    private Label title=new Label("All Clubs");
-    private Label clas=new Label("Name");
-    private Label id=new Label("Activity");
-    private Label fn=new Label("Members");
-    private Label dt=new Label("Creation Date");
+    private  Label title=new Label("All Clubs");
+    private  Label clas=new Label("Name");
+    private  Label id=new Label("Activity");
+    private  Label fn=new Label("Members");
+    private  Label dt=new Label("Creation Date");
     Container gui_Container_tab2 = new Container(new TableLayout(3,4));
+
+
+    public void captureAudio(ActionListener response) {
+        String p = FileSystemStorage.getInstance().getAppHomePath();
+        if(!p.endsWith("/")) {
+            p += "/";
+        }
+        try {
+            final Media media = MediaManager.createMediaRecorder(p + "cn1TempAudioFile", MediaManager.getAvailableRecordingMimeTypes()[0]);
+            media.play();
+
+            boolean b = Dialog.show("Recording", "", "Save", "Cancel");
+            final Dialog d = new Dialog("Recording");
+
+            media.pause();
+            media.cleanup();
+            d.dispose();
+            if(b) {
+                response.actionPerformed(new ActionEvent(p + "cn1TempAudioFile"));
+            } else {
+                FileSystemStorage.getInstance().delete(p + "cn1TempAudioFile");
+                response.actionPerformed(null);
+            }
+        } catch(IOException err) {
+            err.printStackTrace();
+            response.actionPerformed(null);
+        }
+    }
 
 
 
